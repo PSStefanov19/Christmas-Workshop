@@ -13,6 +13,16 @@ namespace WebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(config =>
+                {
+                    config.AllowAnyHeader();
+                    config.AllowAnyMethod();
+                    config.AllowAnyOrigin();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -21,6 +31,8 @@ namespace WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
 
