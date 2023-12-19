@@ -13,9 +13,11 @@ namespace BusinessLogicLayer.Services
         {
             ChristmasBall ball = BallsFactory.CreateBall();
 
-            //chain of responsibility goes here(?)
 
-            DataAccessLayer.Repositories.ChristmasBallsRepository.InsertBall(ball);
+            if (ApiCoordinate.CheckCoordinates(ball.X, ball.Y))
+            {
+                DataAccessLayer.Repositories.ChristmasBallsRepository.InsertBall(ball);
+            }
         }
 
     }
