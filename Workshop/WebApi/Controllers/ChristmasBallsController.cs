@@ -13,5 +13,11 @@ namespace WebApi.Controllers
         {
             return ChristmasBallsRepository.GetAllBalls();
         }
+
+        [HttpPost("post")]
+        public void Post()
+        {
+            BusinessLogicLayer.Services.BallCreation.CreateNewBall();
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace BusinessLogicLayer.Services
         {
             double r1 = (double)random.Next(1, 100) / 100;
             double r2 = (double)random.Next(1, 100) / 100;
+            //ball.x = (1 - sqrt(r1)) * A(x) + (sqrt(r1) * (1 - r2)) * B(x) + (sqrt(r1) * r2) * C(x)
             return (decimal)((1 - Math.Sqrt(r1)) * A.X + Math.Sqrt(r1) * (1 - r2) * B.X + Math.Sqrt(r1) * r2 * C.X);
         }
 
@@ -34,7 +35,7 @@ namespace BusinessLogicLayer.Services
         public static decimal GetRandomRad()
         {
 
-            return (decimal)random.Next(50, 600) / 100;
+            return (decimal)random.Next(300, 600) / 100;
         }
 
         public static string GetRandomColor()
@@ -49,9 +50,9 @@ namespace BusinessLogicLayer.Services
 
         public static ChristmasBall RandomizeBall(ChristmasBall ball)
         {
-            ball.X = GetRandomX();
-            ball.Y = GetRandomY();
-            ball.Radius = GetRandomRad();
+            ball.X = Math.Round(GetRandomX(), 2);
+            ball.Y = Math.Round(GetRandomY(), 2);
+            ball.Radius = Math.Round(GetRandomRad(), 2);
             ball.Color = GetRandomColor();
             ball.Effects = GetRandomEffect();
 

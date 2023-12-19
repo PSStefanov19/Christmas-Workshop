@@ -11,10 +11,10 @@ public partial class ChristmasBall
     [Key]
     public int Id { get; set; }
 
-    [Column("x", TypeName = "numeric(4, 2)")]
+    [Column("x", TypeName = "numeric(5, 2)")]
     public decimal X { get; set; }
 
-    [Column("y", TypeName = "numeric(4, 2)")]
+    [Column("y", TypeName = "numeric(5, 2)")]
     public decimal Y { get; set; }
 
     [Column("radius", TypeName = "numeric(4, 2)")]

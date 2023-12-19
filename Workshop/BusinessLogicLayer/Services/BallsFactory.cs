@@ -10,6 +10,8 @@ namespace BusinessLogicLayer.Services
 
             ball = RandomiseBall.RandomizeBall(ball);
 
+            Console.WriteLine($"{ball.X}, {ball.Y}, {ball.Color}, {ball.Effects}, {ball.Radius}");
+
             return ball;
         }
     }
