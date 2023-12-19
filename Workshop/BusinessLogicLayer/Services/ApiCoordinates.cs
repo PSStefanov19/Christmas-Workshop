@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
@@ -24,9 +27,12 @@ namespace BusinessLogicLayer.Services
                 return false;
             }
 
-            var objects = response.Content.ReadAsStringAsync().Result;
+            var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
-            return false;
+            Console.WriteLine(jsonResponse.ToString());
+            JObject parsedJson = JObject.Parse(jsonResponse);
+
+            return parsedJson["in"].Value<bool>();
         }
     }
 }
