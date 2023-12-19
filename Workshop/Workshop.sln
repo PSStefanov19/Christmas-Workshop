@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{839B5E4F-DB9C-4D1B-8DFA-C7121A83F40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{35A9F43A-E42B-4C95-9A6D-4D08A6463594}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{35A9F43A-E42B-4C95-9A6D-4D08A6463594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{B8577606-10B4-4ECF-9802-EC12709AAD1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{35A9F43A-E42B-4C95-9A6D-4D08A6463594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A9F43A-E42B-4C95-9A6D-4D08A6463594}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A9F43A-E42B-4C95-9A6D-4D08A6463594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8577606-10B4-4ECF-9802-EC12709AAD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8577606-10B4-4ECF-9802-EC12709AAD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8577606-10B4-4ECF-9802-EC12709AAD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8577606-10B4-4ECF-9802-EC12709AAD1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
