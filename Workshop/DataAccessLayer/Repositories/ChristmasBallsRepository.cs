@@ -12,7 +12,7 @@ namespace DataAccessLayer.Repositories
 {
     public class ChristmasBallsRepository
     {
-        public static void CreateBall(ChristmasBall ball)
+        public static void InsertBall(ChristmasBall ball)
         {
             using BallzContext context = new();
             context.Add(ball);
