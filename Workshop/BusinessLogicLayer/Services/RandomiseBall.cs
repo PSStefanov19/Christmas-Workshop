@@ -6,29 +6,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogicLayer
+namespace BusinessLogicLayer.Services
 {
-    internal class RandomizeBall
+    public class RandomiseBall
     {
         internal string[] colors = { "blue-lt", "blue-dk", "red", "gold-lt", "gold-dk" };
         Random random = new Random();
+
+        DataAccessLayer.Models.Point A = new (0.00, 170.30);
+        DataAccessLayer.Models.Point B = new (125.80, 170.30);
+        DataAccessLayer.Models.Point C = new (62.80, 14.90);
+
         public decimal GetRandomX()
         {
             double r1 = (double)random.Next(1, 100) / 100;
             double r2 = (double)random.Next(1, 100) / 100;
-            return (decimal)((1 - Math.Sqrt(r1)) * 0.00 + (Math.Sqrt(r1) * (1 - r2)) * 125.80 + (Math.Sqrt(r1) * r2) * 62.80);
+            return (decimal)((1 - Math.Sqrt(r1)) * A.X + Math.Sqrt(r1) * (1 - r2) * B.X + Math.Sqrt(r1) * r2 * C.X);
         }
 
         public decimal GetRandomY()
         {
             double r1 = (double)random.Next(1, 100) / 100;
             double r2 = (double)random.Next(1, 100) / 100;
-            return (decimal)((1 - Math.Sqrt(r1)) * 170.30 + (Math.Sqrt(r1) * (1 - r2)) * 170.30 + (Math.Sqrt(r1) * r2) * 14.90);
+            return (decimal)((1 - Math.Sqrt(r1)) * A.Y + Math.Sqrt(r1) * (1 - r2) * B.Y + Math.Sqrt(r1) * r2 * C.Y);
         }
 
         public decimal GetRandomRad()
         {
-            
+
             return (decimal)random.Next(50, 600) / 100;
         }
 
@@ -42,7 +47,7 @@ namespace BusinessLogicLayer
             return "g" + random.Next(1, 3);
         }
 
-        public ChristmasBall RandomiseBall(ChristmasBall ball)
+        public ChristmasBall RandomizeBall(ChristmasBall ball)
         {
             ball.X = GetRandomX();
             ball.Y = GetRandomY();
