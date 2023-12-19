@@ -14,7 +14,7 @@ namespace BusinessLogicLayer.Services
             ChristmasBall ball = BallsFactory.CreateBall();
 
 
-            if (!(ApiCoordinate.CheckCoordinates(ball.X, ball.Y)) || OverlapControl.IsOverlapping(ball))
+            if (!(ApiCoordinate.CheckCoordinates(ball.X, ball.Y)) || OverlapControl.IsOverlapping(ball) || ColourRepeatControl.IsRepeatingColour(ball))
             {
                 CreateNewBall();
                 return;
