@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using BusinessLogicLayer.Services;
+using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -10,7 +11,7 @@ namespace WebApi.Controllers
     public class ChristmasBallsController : Controller
     {
         [HttpGet("get")]
-        public List<ChristmasBall> Get() 
+        public List<ChristmasBall> Get()
         {
             return ChristmasBallsRepository.GetAllBalls();
         }
@@ -18,9 +19,20 @@ namespace WebApi.Controllers
         [HttpPost("post")]
         public string Post()
         {
-            BusinessLogicLayer.Services.BallCreation.CreateNewBall();
+            BallCreator bc = new();
 
-            return "{ \"succeeded\": true }";
+            bool ballCreated = false;
+            
+            for (int i = 0; i < 100; i++)
+            {
+                if (bc.CreateNewBall())
+                {
+                    ballCreated = true;
+                    break;
+                }
+            }
+            
+            return $"{{successful = {ballCreated}}}";
         }
     }
 }

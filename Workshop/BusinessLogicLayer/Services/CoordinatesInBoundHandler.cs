@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using DataAccessLayer.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class ApiCoordinate
+    public class ApiCoordinateHandler : IBallHandler
     {
         public static void CheckCoordinates(decimal x, decimal y)
         {
@@ -32,7 +33,16 @@ namespace BusinessLogicLayer.Services
             Console.WriteLine(jsonResponse.ToString());
             JObject parsedJson = JObject.Parse(jsonResponse);
 
-            if(parsedJson["in"].Value<bool>() == false) throw new Exception();
+            if (parsedJson["in"].Value<bool>() == false)
+            {
+                throw new Exception("Ball creation failed");
+            }
+
+            
+        }
+        public void Execute(ChristmasBall ball)
+        {
+            CheckCoordinates(ball.X, ball.Y);
         }
     }
 }

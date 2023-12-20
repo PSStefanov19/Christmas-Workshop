@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class ColourRepeatHandler
+    public class ColourRepeatHandler : IBallHandler
     {
         public static void IsRepeatingColour(ChristmasBall ball)
         {
@@ -16,14 +16,17 @@ namespace BusinessLogicLayer.Services
 
             if (balls.IsNullOrEmpty())
             {
-                ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
+                ApiCoordinateHandler.CheckCoordinates(ball.X, ball.Y);
                 return;
             }
 
             if (balls.Last().Color == ball.Color)
-                throw new Exception();
+                throw new Exception("Colour creation failed");
+        }
 
-            ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
+        public void Execute(ChristmasBall ball)
+        {
+            IsRepeatingColour(ball);
         }
     }
 }
