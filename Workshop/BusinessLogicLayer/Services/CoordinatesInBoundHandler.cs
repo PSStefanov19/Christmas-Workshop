@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Services
 {
     public class ApiCoordinate
     {
-        public static bool CheckCoordinates(decimal x, decimal y)
+        public static void CheckCoordinates(decimal x, decimal y)
         {
             HttpClient client = new HttpClient();
 
@@ -24,7 +24,7 @@ namespace BusinessLogicLayer.Services
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine($"{0} ({1})", response.StatusCode, response.ReasonPhrase);
-                return false;
+                throw new Exception();
             }
 
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
@@ -32,7 +32,7 @@ namespace BusinessLogicLayer.Services
             Console.WriteLine(jsonResponse.ToString());
             JObject parsedJson = JObject.Parse(jsonResponse);
 
-            return parsedJson["in"].Value<bool>();
+            if(parsedJson["in"].Value<bool>() == false) throw new Exception();
         }
     }
 }

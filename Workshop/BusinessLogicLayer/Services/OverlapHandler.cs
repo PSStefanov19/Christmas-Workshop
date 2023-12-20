@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class OverlapControl
+    public class OverlapHandler
     {
         public static decimal Distance(ChristmasBall b1, ChristmasBall b2)
         {
             return (decimal)Math.Sqrt(Math.Pow((double)(b1.X - b2.X), 2.0) + Math.Pow((double)(b1.Y - b2.Y), 2.0));
         }
 
-        public static bool IsOverlapping(ChristmasBall ball)
+        public static void IsOverlapping(ChristmasBall ball)
         {
             var balls = DataAccessLayer.Repositories.ChristmasBallsRepository.GetAllBalls();
 
@@ -27,7 +27,10 @@ namespace BusinessLogicLayer.Services
 
             var overlappingBalls = boundBalls.Where(x => Distance(ball,x) < ball.Radius + x.Radius + padding).ToList();
 
-            return !(overlappingBalls.IsNullOrEmpty());
+            if (!overlappingBalls.IsNullOrEmpty())
+                throw new Exception();
+
+            ColourRepeatHandler.IsRepeatingColour(ball);
         }
     }
 }

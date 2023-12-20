@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class ColourRepeatControl
+    public class ColourRepeatHandler
     {
-        public static bool IsRepeatingColour(ChristmasBall ball)
+        public static void IsRepeatingColour(ChristmasBall ball)
         {
             var balls = DataAccessLayer.Repositories.ChristmasBallsRepository.GetAllBalls();
 
-            if(balls.IsNullOrEmpty()) return false;
+            if(balls.IsNullOrEmpty()) ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
 
-            return (balls.Last().Color == ball.Color);
+            if (balls.Last().Color == ball.Color)
+                throw new Exception();
+
+            ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
         }
     }
 }

@@ -13,16 +13,17 @@ namespace BusinessLogicLayer.Services
         {
             ChristmasBall ball = BallsFactory.CreateBall();
 
-
-            if (!(ApiCoordinate.CheckCoordinates(ball.X, ball.Y)) || OverlapControl.IsOverlapping(ball) || ColourRepeatControl.IsRepeatingColour(ball))
+            try
+            {
+                OverlapHandler.IsOverlapping(ball);
+            }
+            catch
             {
                 CreateNewBall();
                 return;
             }
-            else
-            {
-                DataAccessLayer.Repositories.ChristmasBallsRepository.InsertBall(ball);
-            }
+
+            DataAccessLayer.Repositories.ChristmasBallsRepository.InsertBall(ball);
         }
 
     }
