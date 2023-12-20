@@ -14,7 +14,11 @@ namespace BusinessLogicLayer.Services
         {
             var balls = DataAccessLayer.Repositories.ChristmasBallsRepository.GetAllBalls();
 
-            if(balls.IsNullOrEmpty()) ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
+            if (balls.IsNullOrEmpty())
+            {
+                ApiCoordinate.CheckCoordinates(ball.X, ball.Y);
+                return;
+            }
 
             if (balls.Last().Color == ball.Color)
                 throw new Exception();
