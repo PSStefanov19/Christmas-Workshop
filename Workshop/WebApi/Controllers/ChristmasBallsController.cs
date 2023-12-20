@@ -16,9 +16,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("post")]
-        public void Post()
+        public string Post()
         {
             BusinessLogicLayer.Services.BallCreation.CreateNewBall();
+
+            return "{ \"succeeded\": true }";
         }
     }
 }
